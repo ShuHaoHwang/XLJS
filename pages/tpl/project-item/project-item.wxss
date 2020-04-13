@@ -1,0 +1,54 @@
+.item{
+  display: flex;
+  width: 100%;
+   background-color: #fff; 
+}
+.item-img {
+  padding: 32rpx 28rpx;
+  border-bottom:3rpx solid #999;
+}
+/* dcdcdc */
+.img{
+  width: 120rpx;
+  height: 120rpx;
+}
+.item-main{
+  flex: 1;
+  padding: 32rpx 28rpx 32rpx 0;
+  border-bottom: 3rpx solid #999;
+  line-height: 1.4;
+}
+
+.project{
+  margin-bottom: 4rpx;
+  padding-right: 80rpx;
+  position: relative;
+}
+.project-Name{
+  font-size: 34rpx;
+  color: #222;
+}
+.project-Wages{
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #ff9483;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;  
+}
+.principal{
+  color: #666;
+  font-size: 28rpx;
+  margin-bottom: 4rpx;
+}
+.secondary{
+  font-size: 28rpx;
+  color: #999;
+}
+.secondary-list{
+  margin-right: 8rpx;
+}
+.date{
+  float: right;
+}

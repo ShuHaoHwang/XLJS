@@ -1,0 +1,20 @@
+<template name="project-item">
+  <view class="item">
+    <view class="item-img">
+      <image class="img" src="{{missionImg}}"></image>
+    </view>
+    <view class="item-main">
+      <view class="project">
+        <text class="project-Name" data-id="{{id}}">{{pName}}</text>
+        <text class="project-Wages">{{pWages}}吉猪币</text>
+      </view>
+      <view class="principal">
+        <text>任务发布者:{{principalName}}</text>
+      </view>
+      <view class="secondary">
+        <text class="secondary-list">{{pAddress}}</text>
+        <text class="date">{{pAddtime}}</text>
+      </view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,58 @@
+<!--pages/my/my.wxml-->
+<view class="my-header">
+  <!-- <block wx:else> -->
+   <image class="user-avatar" src="{{avatarUrl}}" mode="aspectFill"></image>
+    <view>
+      <block wx:if="{{user}}">
+          <text class="user-name">{{username}}</text>
+      </block>
+      <block wx:else>
+           <button class="register" open-type="getUserInfo" bindgetuserinfo="login">登录</button>
+      </block>
+    </view>
+   
+</view>
+<view class="item-cells">
+  <view class="item-cell item-cell-access" catchtap="profileTap">
+    <view class="item-cell-bd">
+      <text>个人基本信息</text>
+    </view>
+    <view class="item-cell-ft"></view>
+  </view>
+</view>
+
+<view class="item-cells">
+  <view class="item-cell item-cell-access" catchtap="myDeliveryTap">
+    <view class="item-cell-bd">
+      <text>我的申请</text>
+    </view>
+    <view class="item-cell-ft"></view>
+  </view>
+</view>
+
+<view class="item-cells">
+  <view class="item-cell item-cell-access" catchtap="">
+    <view class="item-cell-bd">
+      <text>积分商城</text>
+    </view>
+    <view class="item-cell-ft"></view>
+  </view>
+</view>
+
+
+ <view class="item-cells">
+  <view class="item-cell item-cell-access" catchtap="deliveryComments">
+    <view class="item-cell-bd">
+      <text>意见反馈</text>
+    </view>
+    <view class="item-cell-ft"></view>
+  </view>
+</view> 
+
+ <view class="item-cells ext-box" hidden='{{usersetting}}'>
+  <view class="item-cell item-cell-access" bindtap='signOut'>
+    <view class="item-cell-bd">
+      <text>退出当前账号</text>
+    </view>
+  </view>
+</view> 

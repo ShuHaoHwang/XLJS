@@ -1,0 +1,58 @@
+<!--pages/project-detail/project-detail.wxml-->
+<import src="../tpl/project-item/project-item.wxml" />
+<import src="../../wxParse/wxParse.wxml"/>
+ <view class="header" style="overflow:hidden">
+  <view class="project">
+    <view class="posi">
+      <text class="name">{{project_content.pName}}</text>
+      <text class="salary">{{project_content.pWages}}吉猪币</text>
+    </view>
+    <view class="posi-list">
+      <text class="field">{{project_content.pAddress}}</text>
+      <text class="field">截止时间：{{project_content.pAvailabletime}}</text>
+      <text>{{project_content.p_type_name}}</text>
+    </view>
+  </view>
+  <view class="principal-m" data-pid="{{project_content.id}}">
+    <image class="principal-logo" src="{{project_content.principalImg}}"></image>
+    <view class="principal">
+      <view class="principal-name">{{project_content.principalName}}</view>
+      <view class="principal-address">联系方式：{{project_content.pPhonenumber}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="content">
+  <view class="title">工作描述</view>
+  <view class="main">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+</view>
+
+<view class="btn-box">
+  <button class="btn-send-resume" size="default" hover-class="btn-send-resume-hover" catchtap="isSendTap" disabled="{{submitdisabled}}">{{submitText}}</button>
+</view>
+
+<view class="mode-bg" hidden="{{mode}}" animation="{{animationData}}" catchtap="closeTap"></view>
+<view class="send-sucess" hidden="{{mode}}" animation="{{animationData}}">
+  <view class="suc-tip">
+    <view class="suc-tip-bottom">
+      <image class="gou" src="/images/posi-succ.png"></image>
+      <view class="tip-content blue">恭喜！投递成功！</view>
+    </view>
+  </view>
+  <view class="anthoer-posi">
+    <scroll-view scroll-y="true">
+    
+      <view wx:for="{{similarPosi}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="projectDetailTap">
+      <template is="project-item" data="{{...item}}" />
+    </view>
+
+    </scroll-view>
+  </view>
+  <view class="btn-box">
+    <button catchtap="closeTap" class="btn-send-resume" size="default" hover-class="btn-send-resume-hover">关闭</button>
+  </view>
+  
+ </view> 
+<view style="height:0rpx;"></view>

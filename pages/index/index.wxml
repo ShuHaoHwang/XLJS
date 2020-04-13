@@ -1,0 +1,15 @@
+<import src="../tpl/project-item/project-item.wxml"/>
+<include src="../tpl/search/search.wxml"/>
+
+<!--index.wxml-->
+<view class="container">
+  <scroll-view scroll-y="true" style="height: {{viewHeight}}px;" bindscrolltolower="lower" >
+    
+    <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="projectDetailTap">
+      <template is="project-item" data="{{...item}}" />
+    </view>
+    
+    <view class="loading" hidden="{{loadingHidden}}">{{loadingText}}</view>
+  </scroll-view>
+  
+</view>

@@ -1,0 +1,37 @@
+<!--pages/messages/messages.wxml-->
+<import src="../tpl/project-item/project-item.wxml" />
+<view class="swiper-tab">
+  <!-- <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">已投递</view> -->
+  <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">审核中</view>
+  <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">已审核</view>
+  <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">被拒绝</view>
+</view>
+
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="min-height:{{winHeight - 47}}px" bindchange="bindChangeTab">
+  <!-- 被查看 -->
+  <swiper-item>
+    <scroll-view scroll-y="true" class="auto-scroll">
+      <view wx:for="{{checking}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="projectDetailTap">
+        <template is="project-item" data="{{...item}}" />
+      </view>
+    </scroll-view>
+  </swiper-item>
+  <!-- 有意向 -->
+  <swiper-item>
+    <view wx:for="{{checked}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="projectDetailTap">
+      <template is="project-item" data="{{...item}}" />
+      <view class="content-box">
+      </view>
+    </view>
+  </swiper-item>
+  <!-- 不合适 -->
+  <swiper-item>
+  <!-- <view class="content">非常荣幸！(๑•̀ㅂ•́)و✧</view> -->
+    <view wx:for="{{reject}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="projectDetailTap">
+      <template is="project-item" data="{{...item}}" />
+      <view class="content-box">
+      </view>
+    </view>
+
+  </swiper-item>
+</swiper>

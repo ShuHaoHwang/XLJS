@@ -1,0 +1,45 @@
+@import "/wxSearch/wxSearch.wxss";
+
+.wxSearch-all {
+   background-color: #417ee0; 
+   /* background-color: red; */
+  padding: 16rpx 28rpx;
+  box-sizing: border-box;
+  border: 1px solid #dcdcdc;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+}
+.input-box {
+  display: inline-block;
+  vertical-align: top;
+  background-color: #fff;
+  height: 60rpx;
+  width: 600rpx;
+  border-radius: 30rpx;
+}
+
+.search-icon {
+  margin: 0 20rpx 0 48rpx;
+  vertical-align: middle;
+}
+
+.input-html {
+  display: inline-block;
+  vertical-align: middle;
+  height: 60rpx;
+  width: 75%;
+}
+
+.btn-cancel {
+  display: inline-block;
+  vertical-align: top;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 32rpx;
+  margin-left: 20rpx;
+  color: #fff;
+}
+

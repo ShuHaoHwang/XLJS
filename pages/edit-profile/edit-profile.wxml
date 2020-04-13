@@ -1,0 +1,86 @@
+<!--pages/edit-profile/edit-profile.wxml-->
+<view class="item-cells no-top">
+
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>姓名</text>
+    </view>
+    <view class="item-cell-ft blue">
+      <input bindfocus="namefocus" bindblur="blurfocus" placeholder-style="color:#999;font-weight:bold;" type="text" maxlength="12" value="{{userName}}" placeholder="{{user}}" />
+    </view>
+  </view>
+
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>性别</text>
+    </view>
+
+    <picker class="item-cell-ft blue" bindchange="bindPickerChangeSex" value="{{genderindex}}" range="{{genderlist}}">
+      <view class="picker">
+        {{genderlist[genderindex]}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>年级</text>
+    </view>
+
+    <picker class="item-cell-ft blue" bindchange="bindPickerChangeGrade" value="{{gradeindex}}" range="{{grade}}">
+      <view class="picker">
+        {{grade[gradeindex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>所处学院</text>
+    </view>
+
+    <picker class="item-cell-ft blue" bindchange="bindPickerChangeinstitute" value="{{instituteindex}}" range="{{institute}}">
+      <view class="picker">
+        {{institute[instituteindex]}}
+      </view>
+    </picker>
+  </view>
+
+
+
+
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>出生年月</text>
+    </view>
+    <picker class="item-cell-ft blue" mode="date" value="{{birthday}}" fields="day" start="1980-01-01" end="2100-01-01" bindchange="bindDateChangeBirthday">
+      <view class="picker">
+        {{birthday}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>联系手机</text>
+    </view>
+    <view class="item-cell-ft blue">
+       <input type="number" bindfocus="phonefocus" bindblur="phoneblur" maxlength="11" value="{{contact}}" placeholder="{{userphone}}" /> 
+    </view>
+  </view>
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>学号</text>
+    </view>
+    <view class="item-cell-ft blue">
+      <input type="text" bindfocus="emailfocus" bindblur="emailblur" value="{{studentid}}" placeholder="{{useremail}}" />
+    </view>
+  </view>
+</view>
+<view class="btn-box" wx:if="{{profile}}">
+  <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="submitProfileBaseTap"> 保存 </button>
+</view>
+
+<view class="btn-box" wx:else>
+    <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="setProfileBaseInfoFun"> 保存 </button>
+  <button class="btn-remove" size="default" hover-class="btn-sure-hover" catchtap="backIndewx"> 返回首页 </button>
+</view>

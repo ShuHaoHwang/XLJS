@@ -1,0 +1,48 @@
+ <!--pages/my-profile/my-profile.wxml-->
+<view class="user-images">
+    <view class="images-box" catchtap="changeBgImgTap">
+        <image src="{{avatarUrl}}" mode="aspectFill"></image>
+        <view class="change-text">点击更换</view>
+    </view>
+</view>
+
+<!--基本信息  -->
+<view class="panel">
+  <view class="panel-hd">
+    <text>基本信息</text>
+    <view class="edit-btn blue" catchtap="editBaseInfoTap">
+      <image class="icon-edit" src="/images/edit_pen.png"></image>
+      <text class="blue">编辑</text>
+    </view>
+  </view>
+  <view class="panel-bd">
+    <view class="base">
+      <text>姓名</text>
+      <text class="data-text">{{profileBaseInfo.username}}</text>
+    </view>
+    <view class="base">
+      <text>吉猪币</text>
+      <text class="data-text">{{profileBaseInfo.wages}}</text>
+    </view>
+    <view class="base">
+      <text>性别</text>
+      <text class="data-text">{{genderlist[profileBaseInfo.gender]}}</text>
+    </view>
+    <view class="base">
+      <text>年级</text>
+      <text class="data-text">{{grade[profileBaseInfo.grade]}}</text>
+    </view>
+    <view class="base">
+    <text>所在学院</text>
+      <text class="data-text">{{institute[profileBaseInfo.instituteId]}}</text>
+    </view>
+    <view class="base">
+      <text>联系手机</text>
+      <text class="data-text">{{profileBaseInfo.contact}}</text>
+    </view>
+      <view class="base">
+      <text>学号</text>
+      <text class="data-text">{{profileBaseInfo.studentid}}</text>
+    </view>
+  </view>
+</view>
