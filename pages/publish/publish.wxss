@@ -1,0 +1,93 @@
+/* pages/publish.wxss */
+@import "/style/item-cells.wxss";
+@import "/style/blue-btn.wxss"; 
+.noticeItem {
+    height: 72rpx;
+    margin-left: 30rpx;
+    font-size: 28rpx;
+    color: #666;
+    line-height: 72rpx;
+    font-weight: 500;
+    width: 560rpx;
+    overflow: hidden;
+}
+
+.notice {
+    width: 100%;
+    height: 72rpx;
+    background-color: #ffffff;
+    line-height: 72rpx;
+    font-size: 30rpx;
+    font-weight: 700;
+    color: #222;
+    display: flex;
+    align-items: center;
+    margin-top: 10rpx;
+}
+
+
+
+.notice image {
+    display: flex;
+    width: 32rpx;
+    height: 32rpx;
+    margin: 0rpx 16rpx 0rpx 20rpx;
+}
+
+.noticeItem {
+    height: 72rpx;
+    margin-left: 30rpx;
+    font-size: 28rpx;
+    color: #666;
+    line-height: 72rpx;
+    font-weight: 500;
+    width: 560rpx;
+    overflow: hidden;
+}
+.formTitle {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    flex: 1;
+    height: 70rpx;
+    background-color: rgba(255, 191, 0, 0.719);
+    line-height: 72rpx;
+    font-size: 25rpx;
+    font-weight: 700;
+    color: #222;
+    align-items: left;
+    box-shadow: 0rpx 10rpx 20rpx 0rpx rgba(0, 0, 0, 0.137);
+}
+
+.formTitle text{
+  margin-left: 25rpx;
+}
+
+.formItem{
+  border-top: 2rpx dotted rgba(0, 0, 0, 0.671);
+  font-weight: 550;
+  background-color: rgba(255, 191, 0, 0.185);
+  box-shadow: 0rpx 10rpx 20rpx 0rpx rgba(0, 0, 0, 0.137);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.formContainer{
+  display: flex;
+  flex-direction: column;
+  margin:10rpx 20rpx;
+}
+
+.DecTextarea{
+  margin:0rpx 20rpx;
+  border: 1rpx  double black;
+}
+
+.imgContainer{
+  width: 240rpx;
+  margin:0rpx 240rpx 20rpx;
+  border: 1rpx  double black;
+}
+.imgDisplay{
+  width: 240rpx;
+  height: 240rpx;
+}

@@ -1,0 +1,113 @@
+<!--pages/publish.wxml-->
+
+<!-- 
+<view class="notice" style="position:relative;">
+    <form bindsubmit="oddPushFormSubmit" reportSubmit="true" style="width: 100%; height:100%; position: absolute; top: 0; left: 0">
+        <button formType="submit" plain="true" style="width: 100%;height:100%;border:1px solid transparent;background-color:transparent;position: absolute; top: 0; left: 0;-webkit-transform: scale(0.5);transform:scale(1);content:\"\";z-index:10"></button>
+    </form>
+    <text>公告</text>
+    <swiper autoplay="true" class="noticeItem" duration="800" interval="3000" vertical="true">
+        <swiper-item wx:for="{{notice}}">
+    {{item.title}}
+  </swiper-item>
+    </swiper>
+</view> 
+-->
+
+<view class="formContainer">
+  <view class="formTitle">
+      <text>负责人信息</text>
+  </view>
+  <view class="formItem">
+    <view class="item-cell item-cell-input">
+      <view class="item-cell-bd">
+        <text>负责人名称: </text>
+      </view>
+        <input placeholder-style="color:#999;font-weight:bold;font-size:24rpx" type="text" maxlength="20" value="" placeholder="请输入负责人名称" bindblur="bindprincipalNameBlur"/>
+    </view>
+
+    <view class="item-cell item-cell-input">
+      <view class="item-cell-bd">
+        <text>联系电话: </text>
+      </view>
+        <input placeholder-style="color:#999;font-weight:bold;font-size:24rpx" type="text" maxlength="20" value="" placeholder="请输入负责人联系电话" bindblur="bindpPhonenumberBlur" />
+    </view>
+  </view> 
+</view>
+
+
+<view class="formContainer">
+  <view class="formTitle">
+      <text>任务基础信息</text>
+  </view>
+  <view class="formItem">
+    <view class="item-cell item-cell-input">
+      <view class="item-cell-bd">
+        <text>任务名称: </text>
+      </view>
+        <input placeholder-style="color:#999;font-weight:bold;font-size:24rpx" type="text" maxlength="20" value="" placeholder="请输入活动名称" bindblur="bindpNameBlur"/>
+  </view>
+
+    <view class="item-cell item-cell-input">
+      <view class="item-cell-bd">
+        <text>活动地址: </text>
+      </view>
+        <input placeholder-style="color:#999;font-weight:bold;font-size:24rpx" type="text" maxlength="20" value="" placeholder="请输入活动地址" bindblur="bindpAddressBlur" />
+    </view>
+
+      <view class="item-cell item-cell-input">
+        <view class="item-cell-bd">
+        <text>任务积分: </text>
+        </view>
+          <input placeholder-style="color:#999;font-weight:bold;font-size:24rpx" type="number" maxlength="20" value="" placeholder="请输入任务积分" bindblur="bindpWagesBlur" />
+      </view>
+
+    <view class="item-cell item-cell-input">
+      <view class="item-cell-bd">
+        <text>任务截止: </text>
+      </view>
+      <picker class="item-cell-ft" mode="date" bindchange="bindDateChange" start="2020-01-01" end="2050-12-31">
+        <view class="picker">
+          {{pAvailabletime}}
+        </view>
+      </picker>
+    </view>
+
+
+    <view class="item-cell item-cell-input">
+      <view class="item-cell-bd">
+        <text>任务类型: </text>
+      </view>
+      <picker class="item-cell-ft" bindchange="bindPickerChange" value="{{missionTypeIndex}}" range="{{missionType}}">
+      <view class="picker">
+        {{missionType[missionTypeIndex]}}
+      </view>
+      </picker>
+    </view>
+
+    <view class="item-cell item-cell-input">
+      <view class="item-cell-bd">
+        <text>任务图片: </text>
+      </view>
+      <button size="mini" bindtap="uploadPictures">上传图片</button>
+    </view>
+
+    <view class="imgContainer">
+      <image mode="aspectFit" class="imgDisplay"src="{{missionImg}}"></image>
+    </view>
+
+    <view class="item-cell item-cell-input">
+      <view class="item-cell-bd">
+        <text>任务描述: </text>
+      </view>
+    </view>
+    <view class="DecTextarea">
+      <textarea style="width: 100%;" bindinput="bindTextAreaBlur" maxlength="-1" placeholder-style="color:bold;" placeholder="请输入活动描述"/>
+        <!-- <text>0/200</text> -->
+    </view>
+    <view class="btn-box">
+      <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="saveProjectInfo"> 确认 </button>
+      <button class="btn-remove" style="margin:0rpx 0rpx 20rpx;" size="default" hover-class="btn-remove-hover" catchtap="backIndewx"> 返回首页 </button>
+    </view>
+  </view>
+</view>

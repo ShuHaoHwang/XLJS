@@ -1,13 +1,16 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/submit/submit",
+    "pages/publish/publish",
     "pages/authorization/authorization",
     "pages/project-detail/project-detail",
     "pages/messages/messages",
     "pages/my-profile/my-profile",
     "pages/edit-profile/edit-profile",
     "pages/my/my",
-    "pages/opinion/opinion"
+    "pages/opinion/opinion",
+    "pages/publish/confirm/confirm"
   ],
   "window": {
     "navigationBarBackgroundColor": "#f6f6f8",

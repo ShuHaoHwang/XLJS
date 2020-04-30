@@ -5,20 +5,25 @@
   margin-top: 80rpx;
   box-sizing: border-box;
 }
+
 .btn-sure {
   color: #fff;
-   background-color: #4990E2; 
+   background-color: rgba(255, 191, 0, 0.719);
 
 }
 .m-b {
   margin-bottom: 40rpx;
 }
 
-.btn-sure-hover{
-  background-color: #1E68BE;
-}
 .btn-remove{
-  color: #4990E2;
+  color: rgba(255, 191, 0, 0.719);
   background-color: #fafafa;
-  margin-bottom: 40rpx;
+}
+
+.btn-remove-hover{
+ background-color: #ebe8e8;
+}
+
+.btn-sure-hover{
+  background-color: rgba(197, 148, 0, 0.719);
 }

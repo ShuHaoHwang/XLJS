@@ -12,8 +12,6 @@ Page({
      */
     data: {
         isShow: false,     //是否拿到用户信息，否则显示默认头像
-        //myself: ''
-        faceImg:"",      // 头像
         user: false,   // 是否显示注册/登录或者用户名
         username:"",    // 判断是否是登录状态，
         usersetting:true,     //    退出当前账户
@@ -22,35 +20,31 @@ Page({
 
     onLoad: function () {
       var that = this;
+      console.log('[用户注册状态]', app.globalData.token, ' [登录状态]', wx.getStorageSync("online"))
         //获取我的信息
-      console.log("开始加载页面");
-      console.log("OPenid: ", app.globalData.openid);
-      console.log("getStorageSync token_uifo: " + wx.getStorageSync("token_uifo") + ";  globalData token: " + app.globalData.token + "; online: " + wx.getStorageSync("online"));
-      if (wx.getStorageSync("token_uifo") && wx.getStorageSync("online")) {   // 判断用户是否登录
+      if (wx.getStorageSync("online")) {   // 判断用户是否登录
         that.setData({
           user: true,
           usersetting: false
         });
-        console.log("登录状态");
       } else {
         that.setData({
           user: false,                    //是否显示登录字眼
-          usersetting: true                
+          usersetting: true           
         });
       };
-      if (app.globalData.userInfo !== null && wx.getStorageSync("online")) {
+      if (app.globalData.userbaseInfo !== null && wx.getStorageSync("online")) {
         that.setData({
-          username: app.globalData.userInfo.nickName,   //设置显示用户名
-          avatarUrl: app.globalData.userInfo.avatarUrl
+          username: app.globalData.userbaseInfo.nickName,   //设置显示用户名
+          avatarUrl: app.globalData.userbaseInfo.avatarUrl
         })
       }
     },
     onShow: function(){
-      
         //获取我的个人信息
         if (app.globalData.profile !== null) {
           
-          console.log("我有个人信息:",app.globalData.profile)
+          console.log("[用户信息]",app.globalData.profile)
         }
     },
     login: function (data) {
@@ -63,26 +57,22 @@ Page({
             // 获取到用户的信息了
             console.log("用户的信息如下：");
             console.log(data.detail.userInfo);
-            if (app.globalData.userInfo == null) {
-              console.log("微信基础信息为空"); 
+            if (app.globalData.userbaseInfo == null) {
+              console.log("[基础信息为空]"); 
               wx.getUserInfo({
                 success: function (res) {
-                  app.globalData.userInfo = res.userInfo;
-                  wx.setStorageSync('userInfo', res.userInfo);
-                  wx.setStorageSync('token_uifo',true)
-                  wx.setStorageSync('online', true)
-                  app.globalData.token = true;
+                  app.globalData.userbaseInfo = res.userInfo;
                   that.setData({
-                    userInfo: res.userInfo,
+                    userbaseInfo: res.userInfo,
                     isShow: true
                   });
+                  wx.setStorageSync('online', true)
                   that.onLoad();
                 }
               })
             } else {
-              console.log("微信基础信息不为空"); 
-              that.setData({ userInfo: app.globalData.userInfo, isShow: true });
-              wx.setStorageSync('token_uifo', true)
+              console.log("[基础信息]", app.globalData.userbaseInfo); 
+              that.setData({ userInfo: app.globalData.userbaseInfo, isShow: true });
               wx.setStorageSync('online', true)
               that.onLoad();
             }
@@ -109,24 +99,12 @@ Page({
     signOut: function () {
       console.log("用户点击了退出账号")
       var that = this;
-      try {//   恢复到没登录的样式
-        wx.setStorageSync('online', false)
-        wx.setStorageSync('token_uifo', false)
-      } catch (e) {
-      }
-      try {
-        wx.removeStorageSync('openid')
-        console.log("用户此时的openid: ", app.globalData.openid)
-      } catch (e) {
-        // Do something when catch error
-      }
-      if (!wx.getStorageSync('token_uifo') && wx.getStorageSync('openid') == ""){
         wx.showModal({
           title: '提示',
           content: '您确定要退出登录？',
           success: function (res) {
             if (res.confirm) {
-              wx.removeStorage
+              wx.setStorageSync('online', false);    //   恢复到没登录的样式
               that.setData({
                 user: false,
                 usersetting: true,
@@ -137,14 +115,15 @@ Page({
             }else if (res.cancel) {}
           }
         })
-      }
     },
+
     //编辑资料
     editInfoTap: function () {
         wx.navigateTo({
             url: '/pages/edit-my/edit-my',
         })
     },
+    
     //个人信息
     profileTap: function () {
       if ( wx.getStorageSync("online")) { 
@@ -165,7 +144,7 @@ Page({
     },
     //我的投递
     myDeliveryTap: function () {
-      if (wx.getStorageSync("token") == "true" || app.globalData.token == "true") { 
+      if (wx.getStorageSync("online")) { 
           wx.switchTab({
             url: '/pages/messages/messages'
         });

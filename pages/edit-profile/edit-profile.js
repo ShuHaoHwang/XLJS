@@ -145,7 +145,7 @@ Page({
           title: "出错了！",
           content: "手机号码格式不对！"
         });
-      } else if (!(/^0\d*$/.test(this.data.studentid))) {
+      } else if (!(/\d*$/.test(this.data.studentid))) {
         wx.showModal({
           title: "出错了！",
           content: "学号格式不对！"
@@ -191,7 +191,7 @@ Page({
           app.alert('学号不能为空！');
           return false;
       }
-    var myreg = /^0\d*$/;
+    var myreg = /\d*$/;
       if (!myreg.test(this.data.studentid)) {
           app.alert('学号格式不对！');
           return false;
@@ -232,6 +232,7 @@ Page({
       })
   },
   saveProfile: function(profile_data){
+    console.log('[用户修改后的信息]', profile_data)
     var that = this;
     if (1){
       app.apiGet(app.apiList.saveProfile, profile_data,function(res){

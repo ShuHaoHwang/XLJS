@@ -1,0 +1,41 @@
+<!--pages/publish/confirm.wxml-->
+<import src="../../tpl/project-item/project-item.wxml"/>
+
+
+<view>
+  <template is="project-item" data="{{...projectInfo}}" />
+</view>
+
+<view class="formContainer">
+  <view class="formTitle">
+      <text>负责人信息</text>
+  </view>
+  <view class="formItem">
+    <view class="item">
+      <view class="item-cell-bd">
+        <text>负责人姓名: </text>
+      </view>
+       <text class="">{{projectInfo.principalName}}</text>
+    </view>
+
+    <view class="item">
+      <view class="item-cell-bd">
+        <text>联系电话: </text>
+      </view>
+      <text>{{projectInfo.pPhonenumber}}</text>
+    </view>
+
+    <view class="item">
+      <view class="item-cell-bd">
+        <text>任务描述: </text>
+      </view>
+    </view>
+    <view class="DecTextarea">
+        <text>{{projectInfo.pDesc}}</text>
+    </view>
+    <view class="btn-box">
+      <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="submitProjectInfo"> 提交申请 </button>
+      <button class="btn-remove" size="default" style="margin:0rpx 0rpx 20rpx;" hover-class="btn-remove-hover" catchtap="back"> 返回修改 </button>
+    </view>
+  </view> 
+</view>

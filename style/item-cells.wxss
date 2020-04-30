@@ -5,7 +5,7 @@
     color: #666;
     margin-top: 20rpx;
 }
-.item-cells.no-top{margin-top: 0;}
+.item-cells.no-top{margin-top: 50px;}
 .item-cell{
   padding: 30rpx 28rpx 30rpx 28rpx;
   display: flex;
@@ -40,7 +40,7 @@
   flex: 1;
 }
 .item-cell-ft{
-  position: relative;
+  
 }
 .item-cell.item-cell-input {padding: 22rpx 28rpx 22rpx 28rpx;}
 .item-cell-input .item-cell-bd{

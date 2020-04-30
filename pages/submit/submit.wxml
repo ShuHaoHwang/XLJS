@@ -1,0 +1,82 @@
+<!--pages/submit/submit.wxml-->
+
+<view class="formContainer">
+  <view class="infoContainer">
+    <view class="item-img">
+      <image class="img" src="{{project_content.missionImg}}"></image>
+    </view>
+
+    <view class="item-main">
+      <view class="project">
+        <text class="project-Name" data-id="{{id}}">{{project_content.pName}}</text>
+        <text class="project-Wages">{{project_content.pWages}}吉猪币</text>
+      </view>
+      <view class="secondary">
+        <text class="secondary-list">地址：{{project_content.pAddress}}</text>
+        <text class="date">{{project_content.pAvailabletime}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="formItem">
+    <view class="principal-m" data-pid="{{project_content.id}}">
+      <image class="principal-logo" src="{{project_content.principalImg}}"></image>
+    <view class="principal">
+      <view class="principal-name">{{project_content.principalName}}</view>
+      <view class="principal-address" bindtap="phonecall">联系方式：{{project_content.pPhonenumber}}</view>
+    </view>
+    </view>
+  </view>
+</view>
+
+<view class="formContainer">
+  <view class="formTitle">
+      <text>信息</text>
+  </view>
+  <view class="formItem">
+    <view class="item-cell item-cell-input">
+      <view class="item-cell-bd">
+        <text>提交人姓名：</text>
+      </view>
+      <input placeholder-style="color:#999;font-weight:bold;font-size:24rpx" disabled="true" type="text" maxlength="20" value="{{userifo.username}}" placeholder="请输入姓名" bindblur="bindpPhonenumberBlur" />
+    </view>
+
+    <view class="item-cell item-cell-input">
+      <view class="item-cell-bd">
+        <text>联系电话: </text>
+      </view>
+        <input placeholder-style="color:#999;font-weight:bold;font-size:24rpx" disabled="true" type="text" maxlength="20" value="{{userifo.contact}}" placeholder="请输入联系电话" bindblur="bindpPhonenumberBlur" />
+    </view>
+
+    
+    <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>完成照片: </text>
+    </view>
+      <button size="mini" bindtap="chooseImage">上传图片</button>
+    </view>
+
+    <view class="imgsContainer">
+      <view class="imgItem"  wx:for="{{missionImgs}}" wx:for-item="item" wx:key="*this" >
+        <image mode="aspectFit" class="imgDisplay"src="{{item}}"></image>
+        <icon type="cancel" size="40" class="delete-btn" data-index="{{index}}" catchtap="deleteImg"></icon >
+      </view>
+    </view>
+    
+
+    <view class="item-cell item-cell-input">
+      <view class="item-cell-bd">
+        <text>备注: </text>
+      </view>
+    </view>
+    <view class="DecTextarea">
+      <textarea style="width: 100%;" bindinput="bindTextAreaBlur" maxlength="-1" placeholder-style="color:bold;" placeholder=""/>
+        <!-- <text>0/200</text> -->
+    </view>
+
+    <view class="btn-box">
+      <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="submit"> 提交 </button>
+      <button class="btn-remove" style="margin:0rpx 0rpx 20rpx;" size="default" hover-class="btn-remove-hover" catchtap="back"> 返回 </button>
+    </view>
+  </view>
+
+</view>

@@ -12,4 +12,11 @@
     <view class="loading" hidden="{{loadingHidden}}">{{loadingText}}</view>
   </scroll-view>
   
+
+  <view bindtap="addMsTab" class="toIndex">
+    <image src=""></image>
+  </view>
+
+
+
 </view>

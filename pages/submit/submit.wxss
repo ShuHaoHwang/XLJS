@@ -1,0 +1,62 @@
+/* pages/submit/submit.wxss */
+@import "../publish/publish.wxss";
+@import "../tpl/project-item/project-item.wxss";
+
+.imgItem{
+  display: flex;
+  flex-direction: row;
+  width: 230rpx;
+  border: 1rpx  double black;
+}
+
+.imgsContainer{
+  display: flex;
+  flex-wrap:wrap;
+}
+
+.delete-btn{
+  position: absolute;
+  z-index: 2;
+}
+
+.infoContainer{
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  width: 100%;
+  background-color: rgba(255, 191, 0, 0.719);
+  box-shadow: 0rpx 10rpx 20rpx 0rpx rgba(0, 0, 0, 0.137);
+}
+.item-img {
+  padding: 32rpx 28rpx;
+}
+
+.infoContainer image{
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.principal-m{
+  display: flex;
+  padding-top: 30rpx;
+  margin-bottom: 30rpx;
+  margin-left: 20rpx;
+}
+.principal-logo{
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 28rpx;
+}
+.principal{
+  color: #666;
+  position: relative;
+  padding-right: 20rpx;
+  flex: 1;
+  margin-right: 40rpx;
+}
+.principal-name{
+  font-size: 32rpx;
+  margin-bottom: 28rpx;
+  padding-top: 24rpx;
+}
+.principal-address{font-size: 28rpx;}

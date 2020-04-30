@@ -25,7 +25,7 @@ page{
 }
 .btn{
   width: 80%;
-  background: #4990E2;
+  background: rgba(255, 191, 0, 0.719);
   margin: 60rpx auto;
   color: #fff;
 }

@@ -84,10 +84,10 @@ Page({
   submite: function (e) {
     if (this.data.conval){
       app.apiPost(app.apiList.retroaction, {
-          channel:1,
-          content: this.data.conval
+          content: this.data.conval,
+          openid: app.globalData.openid
         }, function (data) {
-          if(data.status){
+          if(1){
               wx.showToast({
                 title: '成功',
                 icon: 'success',
@@ -101,7 +101,7 @@ Page({
                 }
             })
           }else{
-            app.alert(data.rows);
+            // app.alert(data.rows);
           }
         })
     }else{

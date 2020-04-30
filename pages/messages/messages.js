@@ -10,14 +10,14 @@ Page({
     winHeight: 0,
     currentTab: 0, // tab切换 
     isHiddenMes: true,
-    mapPlace:""
+    mapPlace:"",
+    readList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
     var that = this;
     app.loading();
     //获取设备宽高
@@ -25,51 +25,54 @@ Page({
         winWidth: app.globalData.systemInfo.windowWidth,
         winHeight: app.globalData.systemInfo.windowHeight
     });
-
-    that.getMesgFun();
-
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
       app.loading();
-      this.getMesgFun();
-  },
+      if (wx.getStorageSync("online")){
+        this.getMesgFun();
+      }else{
+        // this.data.readList = [];
+        this.setData({
+          accept: [],
+          checking: [],
+          finish: []
+        })
+        app.hideloading();
+      }
+      
 
+  },
   getMesgFun: function () {
     var that = this;
     app.apiPost(app.apiList.deliveryStatus, {
       openid: app.globalData.openid
     }, function (data) {
-      console.log(data);
       //暂时不区分新消息
       if (wx.getStorageSync("online")){
-        var readList = data;
-        console.log('readList:  ', readList);
-        var checking = [],
-            checked = [],
-            reject = []
+        that.data.readList= data;
+        console.log('readList:  ', that.data.readList);
+        var accept = [],
+            checking = [],
+            finish = []
 
-        for (var i in readList) {
-          console.log('开始了遍历！！readList[i]:   ', readList[i], i )
-          if (readList[i].status == '1') {    // 被查看
-            checking.push(readList[i]);
-          } else if (readList[i].status == '2') { 
-            checked.push(readList[i]);
-          } else if (readList[i].status == '3') {// 已审核
-            reject.push(readList[i]);
+        for (var i in data) {
+          if (data[i].status == '1') {    // 被查看
+            accept.push(data[i].project);
+          } else if (data[i].status == '2') { 
+            checking.push(data[i].project);
+          } else if (data[i].status == '3') {// 已审核
+            finish.push(data[i].project);
           } 
         }
-       
         that.setData({
+          accept: accept,
           checking: checking,
-          checked: checked,
-          reject: reject
+          finish: finish
         })
       } else {
-
         that.setData({
           isHiddenMes: false
         })
@@ -78,41 +81,60 @@ Page({
     })
   },
   //项目活动详情
-  projectDetailTap: function (event) {
+  submitTap: function (event) {
       var that = this;
       var id = event.currentTarget.dataset.id; // 当前id
       console.log('event.currentTarget.dataset.id:   ',id);
+      var project = null;
       // 找出当时点击的那一项的详细信息
-      // for (var d of this.data.list) {
-      //     if (d.id == id) {
-      //         d.p_type == 0 ? d.p_type_name = "全职" : d.p_type_name = "志愿"
-      //         project = d;
-      //         break;
-      //     }
-      // }
-
-      app.apiPost('/public/getprojectbyid', {id},function(data){
-        console.log('project: ', data);
-        data
-        if (!data) {
-          console.log('系统出错');
-          return;
-        }
-        // 设置到全局变量中去，让下个页面可以访问
-        app.globalData.projectDetail = data;
-        // 切换页面
-        wx.navigateTo({
-          url: '../project-detail/project-detail'
-        });
-          
-        })
-
+      for (var d of this.data.readList) {
+          if (d.project.id == id) {
+            d.project.p_type == 0 ? d.project.p_type_name = "全职" : d.project.p_type_name = "志愿"
+            project = d.project;
+              break;
+          }
+      }
+      console.log('project: ', project);
+      if (!project) {
+        console.log('系统出错');
+        return;
+      }
+      // 设置到全局变量中去，让下个页面可以访问
+      app.globalData.projectDetail = project;
+      // 切换页面
+      wx.navigateTo({
+        url: '../submit/submit'
+      });
+  },
+  projectDetailTap: function (event) {
+    var that = this;
+    var id = event.currentTarget.dataset.id; // 当前id
+    console.log('event.currentTarget.dataset.id:   ', id);
+    var project = null;
+    // 找出当时点击的那一项的详细信息
+    for (var d of this.data.readList) {
+      if (d.project.id == id) {
+        d.project.p_type == 0 ? d.project.p_type_name = "全职" : d.project.p_type_name = "志愿"
+        project = d.project;
+        break;
+      }
+    }
+    console.log('project: ', project);
+    if (!project) {
+      console.log('系统出错');
+      return;
+    }
+    // 设置到全局变量中去，让下个页面可以访问
+    app.globalData.projectDetail = project;
+    // 切换页面
+    wx.navigateTo({
+      url: '../project-detail/project-detail'
+    });
   },
   //滑动切换tab
   bindChangeTab: function (e) {
     this.setData({ currentTab: e.detail.current });
   },
-  
   //点击tab切换
   swichNav: function (e) {
     var that = this ;
@@ -123,6 +145,5 @@ Page({
         currentTab: e.target.dataset.current
       })
     }
-  },
-
+  }
 })

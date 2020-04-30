@@ -12,12 +12,11 @@ var app = getApp();
 Page({
     data: {
         page: 1,//页码
-        limit: 6,//条数
+        limit: 10,//条数
         // searchPage: 1, //搜索页码
         // searchLimit: 10,//搜索条数
         // searchValue:'',//搜索条件
         searchBtnText:'搜索',
-
         viewHeight: 600,
         loadingText: '加载中...',//
         loadingHidden: true,//默认隐藏更多
@@ -103,7 +102,6 @@ Page({
             url: '../project-detail/project-detail'
         });
     },
-
     //加载更多
     lower: function (event) {
         var that = this;
@@ -162,6 +160,11 @@ Page({
             
             app.hideloading();
         })
+    },
+    addMsTab:function(e){
+      wx.navigateTo({
+        url: '../publish/publish',
+      })
     },
 
     //点击搜索按钮

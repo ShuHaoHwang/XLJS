@@ -15,3 +15,22 @@
     font-size: 28rpx;
 }
 
+.toIndex {
+    background: rgba(255,255,255,0.9);
+    z-index: 111;
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0rpx 0rpx 22rpx 0rpx rgba(184,38,38,0.1);
+    position: fixed;
+    right: 20rpx;
+    bottom: 300rpx;
+}
+
+.toIndex>image {
+    width: 52rpx;
+    height: 50rpx;
+}

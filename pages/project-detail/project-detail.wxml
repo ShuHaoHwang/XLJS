@@ -13,6 +13,7 @@
       <text>{{project_content.p_type_name}}</text>
     </view>
   </view>
+
   <view class="principal-m" data-pid="{{project_content.id}}">
     <image class="principal-logo" src="{{project_content.principalImg}}"></image>
     <view class="principal">
@@ -41,6 +42,7 @@
       <view class="tip-content blue">恭喜！投递成功！</view>
     </view>
   </view>
+
   <view class="anthoer-posi">
     <scroll-view scroll-y="true">
     
@@ -50,6 +52,7 @@
 
     </scroll-view>
   </view>
+  
   <view class="btn-box">
     <button catchtap="closeTap" class="btn-send-resume" size="default" hover-class="btn-send-resume-hover">关闭</button>
   </view>

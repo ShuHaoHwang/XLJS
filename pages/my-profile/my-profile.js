@@ -24,7 +24,7 @@ Page({
       this.setData({
         profileBaseInfo: app.globalData.profile,
         institute: app.globalData.institute,
-        avatarUrl: app.globalData.userInfo.avatarUrl
+        avatarUrl: app.globalData.userbaseInfo.avatarUrl
       });
 
   },

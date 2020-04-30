@@ -1,6 +1,6 @@
 /**app.wxss**/
 page{
-    background-color: #FFF;
+    background-color: #f8f8f8;
     font-size: 28rpx;
     font-family: 苹方,-apple-system-font,Helvetica Neue,Helvetica,sans-serif;  
 }

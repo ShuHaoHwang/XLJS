@@ -47,8 +47,8 @@ Page({
        //判断是否已投递过
         try {
             var sendPosiArray = wx.getStorageSync('sendPosiArray')
-            if (sendPosiArray) {
-                // Do something with return value
+            console.log(sendPosiArray)
+          if (sendPosiArray && wx.getStorageSync('online')) {
                 for (var i = 0; i < sendPosiArray.length;i++){
                     if (sendPosiArray[i] == app.globalData.projectDetail.id){
                         that.setData({
@@ -61,7 +61,8 @@ Page({
             }
         } catch (e) {
         }
-    },
+  }, onShow: function () {
+  },
     //发送个人信息
     isSendTap: function () {
       
@@ -81,17 +82,17 @@ Page({
               confirmColor: '#4990E2',
               success: function (res) {
                 console.log(res);
-                that.sendResumeFun();
+                that.sendProfileFun();
               }
             })
         }else{
             wx.reLaunch({
-              url: '/pages/edit-resume-base/edit-resume-base?type=0',
+              url: '/pages/edit-profile/edit-profile?type=0',
             })
         }    
     },
     //投递接口
-    sendResumeFun: function(){
+    sendProfileFun: function(){
         var that = this;
         app.apiGet(app.apiList.deliveryProfile,{
             openid: app.globalData.openid,
@@ -110,7 +111,6 @@ Page({
                 that.setData({
                     mode: false,
                     animationData: animation.export(),
-                    similarPosi: data.ret,
                     submitText: "已投递",
                     submitdisabled: true,
                 })
